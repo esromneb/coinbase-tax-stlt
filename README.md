@@ -2,14 +2,16 @@
 Coinbase gives out a "gain/loss" PDF, and CSV. This CSV is named `Coinbase-2022-CB-GAINLOSSCSV_.csv`
 
 # Purpose
-This PDF is lacking the correct summary. It gives net gains (proceeds-cost), but it does NOT give `proceeds` or `costs`.
+This PDF summary is lacking the correct summation. It gives net gains (proceeds-cost), but it does NOT give `proceeds` or `costs` separately.
 
-# Solution
+# Problem
 This code parses through and gives:
 * `short term cost basis`
 * `short term proceeds`
 * `long term cost basis`
 * `long term proceeds`
+
+These are the fields that your CPA needs to file your taxes.
 
 # Usage
 ```bash
