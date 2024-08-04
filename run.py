@@ -1,7 +1,7 @@
 import csv
 import sys
 
-PATH='input/Coinbase-2022-CB-GAINLOSSCSV_.csv'
+PATH='input/Coinbase-2023-CB-GAINLOSSCSV_.noheader.csv'
 OPATH='output.csv'
 
 
@@ -78,7 +78,8 @@ with open(PATH, 'r') as file:
     # print("-------")
 
     # Iterate over each row in the CSV file
-    for row in reader:
+    for i,row in enumerate(reader):
+        excelrow = i+2 # Calculate the row as viewed when this CSV is opened in excel
         # Access the columns based on their names
         transaction_type = row['Transaction Type']
         transaction_id = row['Transaction ID']
@@ -86,7 +87,13 @@ with open(PATH, 'r') as file:
         asset_name = row['Asset name']
         amount = float(row['Amount'])
         date_acquired = row['Date Acquired']
-        cost_basis = float(row['Cost basis (USD)'])
+
+        try:
+            cost_basis = float(row['Cost basis (USD)'])
+        except ValueError:
+            print(f"Empty cost basis for row {excelrow} ({asset_name}, {amount})")
+            cost_basis = 0.0
+
         date_of_disposition = row['Date of Disposition']
         proceeds = float(row['Proceeds (USD)'])
         gains_losses = float(row['Gains (Losses) (USD)'])

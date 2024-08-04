@@ -14,6 +14,7 @@ This code parses through and gives:
 These are the fields that your CPA needs to file your taxes.
 
 # Usage
+You need to delete the header lines at the top of the CSV before this program will read it
 ```bash
 mkdir input
 # put the input file here named Coinbase-2022-CB-GAINLOSSCSV_.csv
